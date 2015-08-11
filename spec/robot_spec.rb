@@ -6,25 +6,20 @@ describe Robot::Robot do
   let(:robot) { Robot::Robot.new table}
 
   describe 'place' do
+
+    let(:message) {"Don't place me here. I will fall!"}
+
     context 'on the board' do
       it "at 0,0,SOUTH should" do
-        robot.place(0,0, Robot::Robot::SOUTH)
-        expect(robot.report).to eql("0,0,SOUTH")
+        expect(robot.place(0,0, Robot::Robot::SOUTH)).to_not eql(message)
       end
 
       it "at 4,4,NORTH should" do
-        robot.place(4,4, Robot::Robot::NORTH)
-        expect(robot.report).to eql("4,4,NORTH")
+        expect(robot.place(4,4, Robot::Robot::NORTH)).to_not eql(message)
       end
     end
 
     context 'off the board' do
-      # facing direction does not matter when you place 
-      # the robot on a space that is not on the table
-      #
-      #
-      let(:message) {"Don't place me here. I will fall!"}
-
       it "at -1,0 should" do
         expect( robot.place(-1,0, Robot::Robot::WEST) ).to eql(message)
       end
@@ -56,10 +51,10 @@ describe Robot::Robot do
       robot.place(2,3, Robot::Robot::NORTH)
     end
     it "turns" do
-      expect(robot.left).to eql(Robot::Robot::WEST)
-      expect(robot.left).to eql(Robot::Robot::SOUTH)
-      expect(robot.left).to eql(Robot::Robot::EAST)
-      expect(robot.left).to eql(Robot::Robot::NORTH)
+      expect( robot.left ).to eql(Robot::Robot::WEST)
+      expect( robot.left ).to eql(Robot::Robot::SOUTH)
+      expect( robot.left ).to eql(Robot::Robot::EAST)
+      expect( robot.left ).to eql(Robot::Robot::NORTH)
     end
   end
 
@@ -68,33 +63,26 @@ describe Robot::Robot do
       robot.place(2,3, Robot::Robot::NORTH)
     end
     it "turns" do
-      expect(robot.right).to eql(Robot::Robot::EAST)
-      expect(robot.right).to eql(Robot::Robot::SOUTH)
-      expect(robot.right).to eql(Robot::Robot::WEST)
-      expect(robot.right).to eql(Robot::Robot::NORTH)
-    end    
+      expect( robot.right ).to eql(Robot::Robot::EAST)
+      expect( robot.right ).to eql(Robot::Robot::SOUTH)
+      expect( robot.right ).to eql(Robot::Robot::WEST)
+      expect( robot.right ).to eql(Robot::Robot::NORTH)
+    end
   end
 
   describe 'move' do
+
+    let(:message) { "I'm going to fall off the edge!" }
+
     context 'into a valid location' do
-
-      it "should move from 0,0, NORTH" do
-        robot.place(0,0,Robot::Robot::NORTH)
-        robot.move
-        expect( robot.report ).to eql("0,1,NORTH")
-      end
-
       it "should move from 3,3, WEST" do
         robot.place(3,3,Robot::Robot::WEST)
-        robot.move
-        expect( robot.report ).to eql("2,3,WEST")
+        expect( robot.move ).to_not eql(message)
       end
 
     end
 
     context 'off the table' do
-      
-      let(:message) { "I'm going to fall off the edge!" }
 
       it "should complain when moving from 0,0, SOUTH" do
         robot.place(0,0,Robot::Robot::SOUTH)
@@ -135,6 +123,12 @@ describe Robot::Robot do
         robot.place(4,4,Robot::Robot::EAST)
         expect( robot.move ).to eql(message)
       end
+    end
+  end
+
+  describe 'report' do
+    it "should respond to report" do
+      expect( Robot::Robot.instance_methods.grep(:report) ).to eql([:report])
     end
   end
 end
