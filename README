@@ -1,0 +1,17 @@
+* author: Kyle Grovers
+* USAGE
+
+* Ensure ruby, rake and rspec installed. 
+> rspec website: http://rspec.info/
+> rake website: https://github.com/ruby/rake
+-- To run the tests, `rspec spec`
+
+-- To run the application, `rake`, default is 5,5
+-- To define your own table size, `COLUMNS={num_colums} ROWS={num_rows} rake` 
+-- available commands: PLACE (options -- see below), MOVE, LEFT, RIGHT, REPORT, Q or QUIT to quit
+
+PLACE column,row,NORTH (no spaces except after PLACE)
+
+
+
+ 
