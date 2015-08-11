@@ -65,7 +65,7 @@ module Robot
     end
 
     def report
-      report_formatter.report(x, y, facing)
+      Reporter.report(x, y, facing)
     end
 
     private
