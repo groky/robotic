@@ -11,11 +11,10 @@ module Robot
 
     attr_reader :table, :facing
 
-    def initialize(table, report_formatter: ReportFormatter.new)
+    def initialize(table)
       @table    = table
       @position_x = 0
       @position_y = 0
-      @report_formatter = report_formatter
     end
 
     def place(x, y, facing)
