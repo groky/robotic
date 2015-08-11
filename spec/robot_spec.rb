@@ -51,10 +51,10 @@ describe Robot::Robot do
       robot.place(2,3, Robot::Robot::NORTH)
     end
     it "turns" do
-      expect(robot.left).to eql(Robot::Robot::WEST)
-      expect(robot.left).to eql(Robot::Robot::SOUTH)
-      expect(robot.left).to eql(Robot::Robot::EAST)
-      expect(robot.left).to eql(Robot::Robot::NORTH)
+      expect( robot.left ).to eql(Robot::Robot::WEST)
+      expect( robot.left ).to eql(Robot::Robot::SOUTH)
+      expect( robot.left ).to eql(Robot::Robot::EAST)
+      expect( robot.left ).to eql(Robot::Robot::NORTH)
     end
   end
 
@@ -63,11 +63,11 @@ describe Robot::Robot do
       robot.place(2,3, Robot::Robot::NORTH)
     end
     it "turns" do
-      expect(robot.right).to eql(Robot::Robot::EAST)
-      expect(robot.right).to eql(Robot::Robot::SOUTH)
-      expect(robot.right).to eql(Robot::Robot::WEST)
-      expect(robot.right).to eql(Robot::Robot::NORTH)
-    end    
+      expect( robot.right ).to eql(Robot::Robot::EAST)
+      expect( robot.right ).to eql(Robot::Robot::SOUTH)
+      expect( robot.right ).to eql(Robot::Robot::WEST)
+      expect( robot.right ).to eql(Robot::Robot::NORTH)
+    end
   end
 
   describe 'move' do
