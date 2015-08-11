@@ -125,3 +125,10 @@ describe Robot::Robot do
       end
     end
   end
+
+  describe 'report' do
+    it "should respond to report" do
+      expect( Robot::Robot.instance_methods.grep(:report) ).to eql([:report])
+    end
+  end
+end
