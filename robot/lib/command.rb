@@ -15,8 +15,10 @@ class Command
     @options = {}
   end
 
-  def translate(input)
-    @user_input = input.strip
+  def read(source = STDIN)
+
+    @user_input = source.gets.chomp.strip
+
     if CommandValidator.valid?(user_input)
       format_input
     else
