@@ -160,5 +160,14 @@ module Robot
       facing == WEST
     end
 
+    def welcome_message
+  <<-MESSAGE
+  Welcome to your personal robot.
+  To start, please place me some with: 'PLACE 1,2,EAST'
+  Then move me with: MOVE, TURN, LEFT or RIGHT.
+  To find out where I am: REPORT
+  MESSAGE
+    end
+
   end
 end
