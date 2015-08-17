@@ -14,7 +14,7 @@ module Robot
 
     attr_reader :alive, :table, :command, :source, :facing
 
-    def initialize(source = STDIN, table=Table.new, command = Command.new)
+    def initialize(table=Table.new, command = Command.new)
       @alive    = true
       @source   = source
       @table    = table
@@ -28,7 +28,7 @@ module Robot
 
       while(alive)
         begin
-          command.translate(source.gets.chomp)
+          command.read
           invoke
         rescue Exception => e
           e.message
