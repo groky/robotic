@@ -17,6 +17,19 @@ module Robot
       @position_y = 0
     end
 
+    def run!
+      welcome_message
+
+      while(alive)
+        begin
+          command.translate(source.gets.chomp)
+          invoke
+        rescue Exception => e
+          e.message
+        end
+      end
+
+    end
     def place(x, y, facing)
       if place_here?(x, y)
         @facing     = facing
