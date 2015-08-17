@@ -1,14 +1,8 @@
-require_relative 'robot/runner'
+require_relative 'robot/robot'
 
 task default: 'run'
 
 task :run do
-  include Robot::Runner
-
-  set_columns(ENV['COLUMNS'] || 5)
-  set_rows(ENV['ROWS'] || 5)
-
-  fork do
-    run!
-  end
+  robot = Robot::Robot.new(STDIN)
+  robot.run!
 end
