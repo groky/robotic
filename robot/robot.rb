@@ -30,14 +30,32 @@ module Robot
       end
 
     end
+
     def location
       [position_x, position_y]
     end
+
     def stop!
       @alive = false
     end
+
+    private
+
+    attr_reader :position_x, :position_y
+
+    def invoke
+      case command.command
+      when Command::QUIT, /Q/
+        stop!
+      when Command::PLACE
+        options = command.options
+        place(options[:column], options[:row], options[:direction])
+      end
+    end
+
+
     def place(x, y, facing)
-      if place_here?(x, y)
+      if table.surface.has_point?(x, y)
         @facing     = facing
         @position_x = x
         @position_y = y
