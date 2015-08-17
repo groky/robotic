@@ -6,11 +6,13 @@ describe Command do
     subject(:command) { Command.new }
 
     context 'when valid input' do
+
       let(:input) { ['left', 'right', 'report', 'move'].sample.upcase }
 
       context 'when move, left, right and report' do
         before do
-          command.translate(input)
+          allow(STDIN).to receive(:gets).and_return(input)
+          command.read
         end
         it "should have only a command and no options" do
           expect(command.command).to eql(input)
@@ -30,7 +32,8 @@ describe Command do
         let(:valid_input){'PLACE 2,3,SOUTH'}
 
         before do
-          command.translate(valid_input)
+          allow(STDIN).to receive(:gets).and_return(valid_input)
+          command.read
         end
 
         it "should match the expected result" do
@@ -43,8 +46,12 @@ describe Command do
     context 'when invalid input' do
       let(:invalid_input){ "NORTH 2,5" }
 
+      before do
+        allow(STDIN).to receive(:gets).and_return(invalid_input)
+      end
+
       it "should show a message" do
-        expect{ command.translate(invalid_input) }.to raise_error(RuntimeError, /Please supply a valid input. Valid inputs include:/)
+        expect{ command.read }.to raise_error(RuntimeError, /Please supply a valid input. Valid inputs include:/)
         expect( command.command).to be_nil
         expect( command.options).to be_empty
       end
