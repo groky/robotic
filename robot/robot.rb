@@ -23,7 +23,7 @@ module Robot
         @position_x = x
         @position_y = y
       else
-        "Don't place me here. I will fall!"
+        raise "Don't place me here. I will fall!"
       end
     end
 
@@ -34,7 +34,7 @@ module Robot
         @position_y += STEP if facing_north?
         @position_y -= STEP if facing_south?
       else
-        "I'm going to fall off the edge!"
+        raise "I'm going to fall off the edge!"
       end
     end
 
