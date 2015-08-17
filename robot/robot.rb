@@ -1,3 +1,6 @@
+require_relative 'table'
+require_relative 'lib/command'
+
 module Robot
   class Robot
 
@@ -9,10 +12,13 @@ module Robot
     STEP = 1
     START_POSITION = 0
 
-    attr_reader :table, :facing
+    attr_reader :alive, :table, :command, :source, :facing
 
-    def initialize(table)
+    def initialize(source = STDIN, table=Table.new, command = Command.new)
+      @alive    = true
+      @source   = source
       @table    = table
+      @command  = command
       @position_x = 0
       @position_y = 0
     end
