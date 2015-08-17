@@ -111,10 +111,6 @@ module Robot
       Reporter.report(x, y, facing)
     end
 
-    private
-
-    attr_reader :position_x, :position_y
-
     def can_move?
       case facing
       when NORTH
