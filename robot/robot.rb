@@ -33,6 +33,9 @@ module Robot
     def location
       [position_x, position_y]
     end
+    def stop!
+      @alive = false
+    end
     def place(x, y, facing)
       if place_here?(x, y)
         @facing     = facing
