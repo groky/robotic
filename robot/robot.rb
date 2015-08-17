@@ -128,12 +128,6 @@ module Robot
       end
     end
 
-    def place_here?(x, y)
-      ( y >= START_POSITION  && y <= table.row_limit_index ) &&
-      ( x >= START_POSITION && x <= table.column_limit_index )
-    end
-
-
     def can_move_north?
       table.row_limit_index >= position_y + STEP
     end
