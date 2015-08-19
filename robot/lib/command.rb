@@ -29,10 +29,6 @@ class Command
   private
 
   attr_reader :user_input
-  # def read
-  #   @validator = CommandValidator.new(gets.chomp)
-  #   Kernel.exit(false) if validator.user_input =~ /Q/
-  # end
 
   def format_input
     if user_input =~ /PLACE/
