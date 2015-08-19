@@ -4,7 +4,7 @@ describe Robot::Robot do
 
   describe '#new' do
     it "should create a new robot" do
-      Robot::Robot.new(STDIN)
+      Robot::Robot.new
     end
   end
 
