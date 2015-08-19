@@ -46,11 +46,13 @@ class Command
   end
 
   def valid_commands
-"PLACE 1,2,SOUTH \n
-MOVE\n
-LEFT\n
-RIGHT\n
-REPORT\n
-Q or QUIT to quit"
+<<-MESSAGE
+PLACE 1,2,SOUTH
+MOVE
+LEFT
+RIGHT
+REPORT
+Q or QUIT to quit
+MESSAGE
   end
 end
